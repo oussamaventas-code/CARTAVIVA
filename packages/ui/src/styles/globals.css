@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  /* Dynamic — overridden per restaurant via CSS variables */
+  --color-brand-50: var(--restaurant-brand-50, #f0f9ff);
+  --color-brand-500: var(--restaurant-brand-500, #0ea5e9);
+  --color-brand-900: var(--restaurant-brand-900, #0c4a6e);
+  
+  --color-surface: var(--restaurant-surface, #ffffff);
+  --color-surface-elevated: var(--restaurant-surface-elevated, #f8fafc);
+  --color-text-primary: var(--restaurant-text-primary, #0f172a);
+  --color-text-secondary: var(--restaurant-text-secondary, #64748b);
+  
+  --font-display: var(--restaurant-font-display, 'Inter', sans-serif);
+  --font-body: var(--restaurant-font-body, 'Inter', sans-serif);
+  
+  --radius-card: var(--restaurant-radius-card, 1rem);
+  --radius-button: var(--restaurant-radius-button, 0.75rem);
+}

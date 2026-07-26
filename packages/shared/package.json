@@ -1,0 +1,13 @@
+{
+  "name": "@carta/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@carta/tsconfig": "workspace:*",
+    "typescript": "^5.7.0"
+  }
+}

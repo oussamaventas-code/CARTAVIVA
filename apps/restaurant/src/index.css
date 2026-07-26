@@ -1,0 +1,6 @@
+@import "@carta/ui/styles";
+
+body {
+  margin: 0;
+  font-family: var(--font-body, 'Inter', sans-serif);
+}

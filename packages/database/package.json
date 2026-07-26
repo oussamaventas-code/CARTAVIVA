@@ -1,0 +1,16 @@
+{
+  "name": "@carta/database",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.48.0"
+  },
+  "devDependencies": {
+    "@carta/tsconfig": "workspace:*",
+    "typescript": "^5.7.0"
+  }
+}

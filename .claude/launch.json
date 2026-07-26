@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "carta-all",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["pnpm", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "admin",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["pnpm", "--filter", "@carta/admin", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "restaurant",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["pnpm", "--filter", "@carta/restaurant", "dev"],
+      "port": 3001
+    },
+    {
+      "name": "landing",
+      "runtimeExecutable": "corepack",
+      "runtimeArgs": ["pnpm", "--filter", "@carta/landing", "dev"],
+      "port": 3002
+    }
+  ]
+}

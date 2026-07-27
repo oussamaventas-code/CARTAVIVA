@@ -152,15 +152,15 @@ export default function MenuPage() {
   }
 
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-8">
-      <div className="flex items-start justify-between">
+    <div className="mx-auto max-w-7xl space-y-8 p-4 sm:p-8">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Gestión de Carta</h1>
           <p className="text-slate-500 mt-1">Organiza las categorías y platos de tu menú.</p>
         </div>
         <button
           onClick={() => setImportOpen(true)}
-          className="flex items-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50"
+          className="flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-50 sm:w-auto"
         >
           <UploadCloud className="h-4 w-4" />
           Importar carta antigua
@@ -169,9 +169,9 @@ export default function MenuPage() {
 
       {error && <p className="text-sm text-red-600">{error}</p>}
 
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
         {/* Panel Izquierdo: Categorías */}
-        <div className="col-span-4 space-y-4">
+        <div className="space-y-4 lg:col-span-4">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold text-slate-800">Categorías</h2>
             <button
@@ -197,7 +197,7 @@ export default function MenuPage() {
         </div>
 
         {/* Panel Derecho: Platos de la categoría seleccionada */}
-        <div className="col-span-8 bg-white border border-slate-200 rounded-xl p-6 shadow-sm min-h-[500px]">
+        <div className="min-h-[400px] rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6 lg:col-span-8 lg:min-h-[500px]">
           {selectedCategory ? (
             <DishList
               categoryId={selectedCategory.id}

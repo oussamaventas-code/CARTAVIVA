@@ -9,9 +9,13 @@ const navItems = [
   { name: 'Configuración', href: '/settings', icon: Settings },
 ];
 
-export function Sidebar() {
+export function Sidebar({ open = false }: { open?: boolean }) {
   return (
-    <aside className="w-64 bg-slate-900 text-slate-300 flex flex-col transition-all duration-300">
+    <aside
+      className={`z-40 w-64 flex-col bg-slate-900 text-slate-300 ${
+        open ? 'fixed inset-y-0 left-0 flex' : 'hidden'
+      } lg:static lg:flex`}
+    >
       <div className="h-16 flex items-center px-6 border-b border-slate-800">
         <span className="text-xl font-bold text-white tracking-wider">Carta<span className="text-blue-500">Viva</span></span>
       </div>

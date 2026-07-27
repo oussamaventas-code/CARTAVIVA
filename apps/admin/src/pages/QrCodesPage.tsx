@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Plus, QrCode, Loader2 } from 'lucide-react';
+import { Plus, QrCode, Loader2, AlertTriangle } from 'lucide-react';
 import { TableCard } from '../components/qr/TableCard';
 import type { RestaurantTable } from '../components/qr/types';
 import { fetchTables, createTable, deleteTable } from '../lib/qrApi';
 import { getErrorMessage } from '../lib/errors';
+import { PUBLIC_MENU_BASE_URL } from '../lib/config';
+
+// Sin VITE_PUBLIC_MENU_URL configurada, los QR se generan apuntando a localhost
+// y solo funcionan en el ordenador que los creó. Avisamos en vez de dejar que
+// el usuario imprima códigos rotos.
+const isLocalMenuUrl =
+  PUBLIC_MENU_BASE_URL.includes('localhost') || PUBLIC_MENU_BASE_URL.includes('127.0.0.1');
 
 export default function QrCodesPage() {
   const [tables, setTables] = useState<RestaurantTable[]>([]);
@@ -59,9 +66,23 @@ export default function QrCodesPage() {
           Genera un código QR por mesa y descárgalo listo para imprimir.
         </p>
         <p className="mt-1 text-xs text-slate-400">
-          El enlace es un ejemplo — apuntará a la carta real de tu restaurante en cuanto esté publicada.
+          Cada QR abre la carta de tu restaurante en el móvil del cliente.
         </p>
       </div>
+
+      {isLocalMenuUrl && (
+        <div className="flex items-start gap-3 rounded-xl bg-amber-50 p-4 text-sm text-amber-900">
+          <AlertTriangle className="mt-0.5 h-5 w-5 flex-shrink-0" />
+          <div>
+            <p className="font-medium">Estos QR solo funcionarán en este ordenador</p>
+            <p className="mt-0.5 text-amber-800">
+              Apuntan a <code className="rounded bg-amber-100 px-1">{PUBLIC_MENU_BASE_URL}</code>, que no
+              existe fuera de aquí. Si los escaneas con el móvil darán error. Usa el panel publicado
+              en internet para generar los QR que vayas a imprimir.
+            </p>
+          </div>
+        </div>
+      )}
 
       <form onSubmit={handleAdd} className="flex gap-3">
         <input

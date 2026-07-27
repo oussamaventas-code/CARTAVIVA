@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { Loader2, UtensilsCrossed } from 'lucide-react';
 import { fetchRestaurantBySlug, fetchMenu } from '../lib/menuData';
 import type { MenuCategory, RestaurantInfo } from '../lib/menuData';
+import { getErrorMessage } from '../lib/errors';
 import { DishCard } from '../components/DishCard';
 
 export default function MenuView() {
@@ -35,7 +36,7 @@ export default function MenuView() {
         setCategories(menu);
         setActiveCategoryId(menu[0]?.id ?? null);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'No se pudo cargar la carta.');
+        setError(getErrorMessage(err, 'No se pudo cargar la carta.'));
       } finally {
         setLoading(false);
       }
